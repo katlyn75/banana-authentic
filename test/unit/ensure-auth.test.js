@@ -3,10 +3,10 @@ const createEnsureAuth = require('../../lib/util/ensure-auth');
 const tokenService = require('../../lib/util/token-service');
 
 describe('ensure auth middleware', () => {
-    const user = { _id: 'qwerty' };
+    const reviewer = { _id: 'qwerty' };
     let token = token;
 
-    beforeEach(() => token = tokenService.sign(user));
+    beforeEach(() => token = tokenService.sign(reviewer));
 
     const ensureAuth = createEnsureAuth();
 
@@ -17,7 +17,7 @@ describe('ensure auth middleware', () => {
             }
         };
         const next = () => {
-            assert.equal(req.user.id, user._id);
+            assert.equal(req.reviewer.id, reviewer._id);
             done();
         };
         ensureAuth(req, null, next);

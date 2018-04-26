@@ -6,7 +6,7 @@ const { dropCollection } = require('./db');
 describe('Authorization API', () => {
 
     beforeEach(() => 
-        dropCollection('users'));
+        dropCollection('reviewers'));
 
     let token = null;
 
@@ -23,9 +23,5 @@ describe('Authorization API', () => {
     it('signup', () => {
         assert.ok(token);
     });
-
-    //it verifies
-
-    //});
 
 });
